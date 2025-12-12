@@ -1,0 +1,6 @@
+
+> wavesystem-next@0.1.0 dev
+> next dev --host 0.0.0.0
+
+error: unknown option '--host'
+(Did you mean --port?)
