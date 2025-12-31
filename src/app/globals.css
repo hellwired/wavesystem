@@ -1,15 +1,85 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-900: #0c4a6e;
+
+  --color-secondary: #64748b;
+
+  /* Irova Hotel Theme */
+  --color-irova-primary: #f9f506;
+  --color-irova-bg-light: #f8f8f5;
+  --color-irova-bg-dark: #23220f;
+  --color-forest-green: #1a2e1a;
+  --color-gold-accent: #cfaa56;
+
+  --font-display: var(--font-spline-sans), sans-serif;
+  --font-serif: var(--font-playfair-display), serif;
+
+  /* HB Construcciones Theme */
+  --color-hb-primary: #30e87a;
+  --color-hb-bg-light: #f6f8f7;
+  --color-hb-bg-dark: #112117;
+  --color-hb-gold: #D4AF37;
+  --color-hb-bone: #F5F5F0;
+
+  /* Vetapura Theme */
+  --color-vp-primary: #f9f506;
+  --color-vp-cta: #1e40af;
+  --color-vp-copper: #b07c56;
+  --color-vp-sky: #e0f2fe;
+  --color-vp-bg-light: #f8f8f5;
+  --color-vp-bg-dark: #23220f;
+  --color-vp-text: #1c1c0d;
+
+  /* Linaje Escogido Theme */
+  --color-le-primary: #ecb718;
+  --color-le-primary-hover: #d4a415;
+  --color-le-accent-pink: #FF4D6D;
+  --color-le-accent-light-pink: #FF7F87;
+  --color-le-brown-deep: #3F1C1C;
+  --color-le-bg-light: #f8f7f6;
+  --color-le-bg-dark: #221d10;
+  --color-le-bone-white: #F8F5F2;
+
+  --font-sans: Inter, sans-serif;
+
+  --animate-gradient-xy: gradient-xy 3s ease infinite;
+
+  @keyframes gradient-xy {
+
+    0%,
+    100% {
+      background-size: 400% 400%;
+      background-position: left center;
+    }
+
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+
+  @keyframes breathe {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +92,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
 }

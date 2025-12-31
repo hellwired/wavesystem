@@ -1,0 +1,7 @@
+USE Asistencia;
+
+CREATE TABLE IF NOT EXISTS feriados (
+    fecha DATE PRIMARY KEY,
+    descripcion VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

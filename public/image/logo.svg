@@ -1,0 +1,17 @@
+<svg width="480" height="100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    .text {
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 60px;
+      fill: #1a2530;
+    }
+    .highlight {
+      font-weight: 700;
+      fill: #2980b9;
+    }
+  </style>
+  <text x="10" y="70" class="text">
+    Articulos<tspan class="highlight">DelSur</tspan>
+  </text>
+</svg>

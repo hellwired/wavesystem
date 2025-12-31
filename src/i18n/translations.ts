@@ -66,8 +66,11 @@ export const translations: Record<Language, Translations> = {
       items: {
         features: 'Características',
         technology: 'Tecnología',
-        testimonials: 'Testimonios',
+        testimonials: 'Sistemas',
         pricing: 'Precios',
+        ecommerce: 'Ecommerce',
+        subscriptions: 'Suscripciones',
+        logistics: 'Logística',
       },
       getStarted: 'Comenzar',
     },
@@ -92,8 +95,8 @@ export const translations: Record<Language, Translations> = {
           description: 'Construido sobre principios de diseño atómico, asegurando que cada componente sea reutilizable, escalable y consistente.',
         },
         '2': {
-          title: 'Ultra Rápido',
-          description: 'Optimizado para el rendimiento con estrategias de generación estática y carga diferida inteligente de activos.',
+          title: 'Costos y Ganancias',
+          description: 'Para ayudarte a calcular costos y ganancias de manera efectiva, necesito un poco más de información sobre tu situación. Ingresa para probar',
         },
         '3': {
           title: 'Mobile First',
@@ -153,8 +156,11 @@ export const translations: Record<Language, Translations> = {
       items: {
         features: 'Features',
         technology: 'Technology',
-        testimonials: 'Testimonials',
+        testimonials: 'Systems',
         pricing: 'Pricing',
+        ecommerce: 'Ecommerce',
+        subscriptions: 'Subscriptions',
+        logistics: 'Logistics',
       },
       getStarted: 'Get Started',
     },
@@ -179,8 +185,8 @@ export const translations: Record<Language, Translations> = {
           description: 'Built on principles of atomic design, ensuring every component is reusable, scalable, and consistent.',
         },
         '2': {
-          title: 'Lightning Fast',
-          description: 'Optimized for performance with static generation strategies and intelligent lazy loading of assets.',
+          title: 'Costs and Profits',
+          description: 'To help you calculate costs and profits effectively, I need a bit more information about your situation. Enter to try.',
         },
         '3': {
           title: 'Mobile First',
@@ -192,7 +198,7 @@ export const translations: Record<Language, Translations> = {
         },
         '5': {
           title: 'Global Scale',
-          description: 'Deploy anywhere with edge network capabilities tailored for maximum availability.',
+          description: 'Deploy anywhere with edge network capabilities adapted for maximum availability.',
         },
         '6': {
           title: 'Real-time Analytics',

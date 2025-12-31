@@ -1,0 +1,3 @@
+ALTER TABLE auditorias
+ADD COLUMN deposito VARCHAR(100) DEFAULT NULL AFTER zona,
+ADD COLUMN fecha_stock DATE DEFAULT NULL AFTER deposito;
