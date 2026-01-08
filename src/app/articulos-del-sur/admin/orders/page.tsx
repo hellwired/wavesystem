@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Eye, Loader2, Calendar, User, DollarSign } from 'lucide-react';
+import { Eye, Loader2, Calendar, User, DollarSign, Plus, CreditCard, Banknote, Smartphone } from 'lucide-react';
 import Link from 'next/link';
 
 interface Order {
@@ -9,6 +9,8 @@ interface Order {
     total_amount: string;
     status: string;
     created_at: string;
+    payment_method: string;
+    installments: number;
 }
 
 export default function OrdersPage() {
@@ -32,11 +34,27 @@ export default function OrdersPage() {
         }
     };
 
+    const getPaymentIcon = (method: string) => {
+        switch (method) {
+            case 'credit_card': return <CreditCard size={16} className="text-blue-500" />;
+            case 'mercado_pago': return <Smartphone size={16} className="text-sky-500" />;
+            default: return <Banknote size={16} className="text-green-500" />;
+        }
+    };
+
     if (loading) return <div className="flex justify-center p-12"><Loader2 className="animate-spin text-orange-500" size={40} /></div>;
 
     return (
         <div>
-            <h1 className="text-3xl font-bold text-slate-800 mb-8">Ventas</h1>
+            <div className="flex justify-between items-center mb-8">
+                <h1 className="text-3xl font-bold text-slate-800">Ventas</h1>
+                <Link
+                    href="/articulos-del-sur/admin/orders/create"
+                    className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all flex items-center gap-2 shadow-lg shadow-slate-900/20"
+                >
+                    <Plus size={20} /> Nueva Venta (POS)
+                </Link>
+            </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <table className="w-full text-left">
@@ -44,6 +62,7 @@ export default function OrdersPage() {
                         <tr>
                             <th className="p-4"># Orden</th>
                             <th className="p-4">Cliente</th>
+                            <th className="p-4">Pago</th>
                             <th className="p-4">Fecha</th>
                             <th className="p-4">Estado</th>
                             <th className="p-4 text-right">Total</th>
@@ -58,6 +77,17 @@ export default function OrdersPage() {
                                     <div className="flex items-center gap-2">
                                         <User size={16} className="text-gray-400" />
                                         <span className="font-medium text-slate-900">{order.user_name}</span>
+                                    </div>
+                                </td>
+                                <td className="p-4">
+                                    <div className="flex items-center gap-2" title={order.payment_method}>
+                                        {getPaymentIcon(order.payment_method)}
+                                        <span className="text-sm font-medium capitalize text-slate-600">
+                                            {order.payment_method?.replace('_', ' ') || 'cash'}
+                                            {order.payment_method === 'credit_card' && order.installments > 1 && (
+                                                <span className="ml-1 text-xs bg-slate-100 px-1.5 py-0.5 rounded text-slate-500">{order.installments}x</span>
+                                            )}
+                                        </span>
                                     </div>
                                 </td>
                                 <td className="p-4 text-gray-500 text-sm">

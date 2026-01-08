@@ -199,9 +199,25 @@ export async function getConteos(auditoriaId: number, page: number = 1, limit: n
         const params: any[] = [auditoriaId];
 
         if (search) {
-            query += ` AND (c.producto_sku LIKE ? OR p.nombre LIKE ? OR u.codigo LIKE ? OR p.barcode LIKE ?)`;
-            const searchParam = `%${search}%`;
-            params.push(searchParam, searchParam, searchParam, searchParam);
+            // Create variations to handle scanner/keyboard differences (e.g. 1594-ORO vs 1594/ORO)
+            let searchVariations = [search];
+            if (search.includes('-')) {
+                searchVariations.push(search.replace(/-/g, '/'));
+            }
+            if (search.includes('/')) {
+                searchVariations.push(search.replace(/\//g, '-'));
+            }
+            // Remove duplicates
+            searchVariations = [...new Set(searchVariations)];
+
+            // Build dynamic query for variations
+            const searchConditions = searchVariations.map(() => `(c.producto_sku LIKE ? OR p.nombre LIKE ? OR u.codigo LIKE ? OR p.barcode LIKE ?)`);
+            query += ` AND (${searchConditions.join(' OR ')})`;
+
+            searchVariations.forEach(s => {
+                const searchParam = `%${s}%`;
+                params.push(searchParam, searchParam, searchParam, searchParam);
+            });
         }
 
         // Count total items for pagination
@@ -254,14 +270,24 @@ export async function getAuditoriaStats(auditoriaId: number) {
 
 export async function findAuditItem(auditoriaId: number, query: string) {
     try {
+        // Handle dash/slash variations (e.g. scanner replacing / with -)
+        let searchVariations = [query];
+        if (query.includes('-')) searchVariations.push(query.replace(/-/g, '/'));
+        if (query.includes('/')) searchVariations.push(query.replace(/\//g, '-'));
+        searchVariations = [...new Set(searchVariations)];
+
         const [rows] = await pool.query<RowDataPacket[]>(
             `SELECT c.*, p.nombre as producto_nombre, u.codigo as ubicacion_codigo 
              FROM conteos c 
              LEFT JOIN productos_audit p ON c.producto_sku = p.sku 
              LEFT JOIN ubicaciones u ON c.ubicacion_id = u.id 
-             WHERE c.auditoria_id = ? AND (c.producto_sku = ? OR u.codigo = ? OR p.barcode = ?)
+             WHERE c.auditoria_id = ? AND (
+                c.producto_sku IN (?) OR 
+                u.codigo IN (?) OR 
+                p.barcode IN (?)
+             )
              LIMIT 1`,
-            [auditoriaId, query, query, query]
+            [auditoriaId, searchVariations, searchVariations, searchVariations]
         );
         return rows.length > 0 ? rows[0] : null;
     } catch (error) {

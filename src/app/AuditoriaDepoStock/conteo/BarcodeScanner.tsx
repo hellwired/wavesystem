@@ -29,7 +29,7 @@ export default function BarcodeScanner({ onScan }: BarcodeScannerProps) {
         <form onSubmit={handleSubmit} className="w-full">
             <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span className="material-symbols-outlined text-gray-400">qr_code_scanner</span>
+                    <span className="material-symbols-outlined text-gray-400 notranslate">qr_code_scanner</span>
                 </div>
                 <input
                     ref={inputRef}

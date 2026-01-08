@@ -13,9 +13,10 @@ interface Category {
 interface ProductFormProps {
     initialData?: any;
     isEditing?: boolean;
+    redirectUrl?: string;
 }
 
-export default function ProductForm({ initialData, isEditing = false }: ProductFormProps) {
+export default function ProductForm({ initialData, isEditing = false, redirectUrl = '/articulos-del-sur/admin/products' }: ProductFormProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState<Category[]>([]);
@@ -103,7 +104,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
 
             if (!res.ok) throw new Error('Error al guardar');
 
-            router.push('/articulos-del-sur/admin/products');
+            router.push(redirectUrl);
             router.refresh();
         } catch (error) {
             alert('Error al guardar el producto');
@@ -116,7 +117,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
             <div className="flex justify-between items-center mb-6">
                 <Link
-                    href="/articulos-del-sur/admin/products"
+                    href={redirectUrl}
                     className="flex items-center text-gray-500 hover:text-slate-900 transition-colors"
                 >
                     <ArrowLeft size={20} className="mr-2" /> Volver

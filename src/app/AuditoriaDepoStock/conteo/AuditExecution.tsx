@@ -119,7 +119,7 @@ export default function AuditExecution({
                 <div className="flex-1">
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span className="material-symbols-outlined text-gray-400">search</span>
+                            <span className="material-symbols-outlined text-gray-400 notranslate">search</span>
                         </div>
                         <input
                             type="text"
@@ -146,7 +146,7 @@ export default function AuditExecution({
                             disabled={currentPage === 1}
                             className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30 transition-colors"
                         >
-                            <span className="material-symbols-outlined">chevron_left</span>
+                            <span className="material-symbols-outlined notranslate">chevron_left</span>
                         </button>
                         <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                             {currentPage} / {totalPages || 1}
@@ -156,7 +156,7 @@ export default function AuditExecution({
                             disabled={currentPage >= totalPages}
                             className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30 transition-colors"
                         >
-                            <span className="material-symbols-outlined">chevron_right</span>
+                            <span className="material-symbols-outlined notranslate">chevron_right</span>
                         </button>
                     </div>
                 </div>

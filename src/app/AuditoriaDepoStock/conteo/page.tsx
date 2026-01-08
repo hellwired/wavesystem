@@ -64,7 +64,7 @@ export default async function AuditoriaConteo({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white dark:bg-[#1a2230] p-4 rounded-xl shadow-sm border border-[#e7ebf3] dark:border-[#2a3441] flex items-center gap-4">
                     <div className="p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg">
-                        <span className="material-symbols-outlined">percent</span>
+                        <span className="material-symbols-outlined notranslate">percent</span>
                     </div>
                     <div>
                         <p className="text-sm text-[#4c669a] dark:text-gray-400">Progreso</p>
@@ -73,7 +73,7 @@ export default async function AuditoriaConteo({
                 </div>
                 <div className="bg-white dark:bg-[#1a2230] p-4 rounded-xl shadow-sm border border-[#e7ebf3] dark:border-[#2a3441] flex items-center gap-4">
                     <div className="p-3 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-lg">
-                        <span className="material-symbols-outlined">check_circle</span>
+                        <span className="material-symbols-outlined notranslate">check_circle</span>
                     </div>
                     <div>
                         <p className="text-sm text-[#4c669a] dark:text-gray-400">Contados</p>
@@ -82,7 +82,7 @@ export default async function AuditoriaConteo({
                 </div>
                 <div className="bg-white dark:bg-[#1a2230] p-4 rounded-xl shadow-sm border border-[#e7ebf3] dark:border-[#2a3441] flex items-center gap-4">
                     <div className="p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg">
-                        <span className="material-symbols-outlined">warning</span>
+                        <span className="material-symbols-outlined notranslate">warning</span>
                     </div>
                     <div>
                         <p className="text-sm text-[#4c669a] dark:text-gray-400">Discrepancias</p>

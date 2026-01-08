@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-12-2025 a las 23:22:23
+-- Tiempo de generación: 06-01-2026 a las 23:59:00
 -- Versión del servidor: 10.11.11-MariaDB
 -- Versión de PHP: 8.3.19
 
@@ -108,19 +108,23 @@ CREATE TABLE `products` (
   `stock` int(11) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `is_featured` tinyint(1) DEFAULT 0,
-  `category_id` int(11) DEFAULT NULL
+  `category_id` int(11) DEFAULT NULL,
+  `discount_percentage` int(11) DEFAULT 0,
+  `is_offer` tinyint(1) DEFAULT 0,
+  `offer_expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `image_url`, `stock`, `created_at`, `is_featured`, `category_id`) VALUES
-(1, 'Ventilador Liliana 25 Pulgadas', 'Ventilador de pie Marca Liliana 25 pulgadas', 156000.00, 'image/products/693040acf3840.jpeg', 13, '2025-12-03 13:26:48', 1, 3),
-(2, 'Ventilador Axel 24 Pulgadas', 'Ventilador Axel 24 Pulgadas', 138000.00, 'image/products/693040a4150e6.jpeg', 10, '2025-12-03 13:33:51', 1, 3),
-(3, 'HELADERA CON FREEZER SAMSUNG RT38CG6720S9B3 INOXIDABLE', 'HELADERA CON FREEZER SAMSUNG RT38CG6720S9B3 INOXIDABLE', 999000.00, 'image/products/6930447ecc105.jpeg', 14, '2025-12-03 14:09:02', 1, 6),
-(4, 'SMART LED TV SAMSUNG 43\" PULGADAS FULL HD UN43F6000FGCZB', 'SMART LED TV SAMSUNG 43\" PULGADAS FULL HD UN43F6000FGCZB', 400000.00, 'image/products/69304537c36c1.jpeg', 12, '2025-12-03 14:12:07', 1, 1),
-(5, 'Aire acondicionado RCA 5700W split frio calor Inverter', 'Aire acondicionado RCA RT5700INV 4902F 5700W split frio calor Inverter', 1354499.00, 'image/products/69383f3dad523.webp', 10, '2025-12-09 15:24:45', 1, 10);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image_url`, `stock`, `created_at`, `is_featured`, `category_id`, `discount_percentage`, `is_offer`, `offer_expires_at`) VALUES
+(1, 'Ventilador Liliana 25 Pulgadas', 'Ventilador de pie Marca Liliana 25 pulgadas', 156000.00, 'image/products/693040acf3840.jpeg', 13, '2025-12-03 13:26:48', 1, 3, 0, 0, NULL),
+(2, 'Ventilador Axel 24 Pulgadas', 'Ventilador Axel 24 Pulgadas', 138000.00, 'image/products/693040a4150e6.jpeg', 10, '2025-12-03 13:33:51', 1, 3, 0, 0, NULL),
+(3, 'HELADERA CON FREEZER SAMSUNG RT38CG6720S9B3 INOXIDABLE', 'HELADERA CON FREEZER SAMSUNG RT38CG6720S9B3 INOXIDABLE', 999000.00, 'image/products/6930447ecc105.jpeg', 14, '2025-12-03 14:09:02', 1, 6, 0, 0, NULL),
+(4, 'SMART LED TV SAMSUNG 43\" PULGADAS FULL HD UN43F6000FGCZB', 'SMART LED TV SAMSUNG 43\" PULGADAS FULL HD UN43F6000FGCZB', 400000.00, 'image/products/69304537c36c1.jpeg', 12, '2025-12-03 14:12:07', 1, 1, 0, 0, NULL),
+(5, 'Aire acondicionado RCA 5700W split frio calor Inverter', 'Aire acondicionado RCA RT5700INV 4902F 5700W split frio calor Inverter', 1354499.00, 'image/products/69383f3dad523.webp', 10, '2025-12-09 15:24:45', 1, 10, 10, 1, NULL),
+(6, 'Parlante Noblex', 'Parlante Noblex, Full Sound 3D', 89000.00, 'image/products/012e8164-bbc8-4a81-9a6d-6484ffe5dfe4.webp', 5, '2025-12-29 13:40:01', 1, 4, 15, 1, '2026-01-07 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -195,7 +199,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `phone`, `address`, `city`, `province`, `zip_code`) VALUES
-(1, 'Admin', 'admin@articulosdelsur.com', '$2y$10$.4QZ0BcAiFogm0N.3BAAO.Vgoav/MrmyFfmSFRmo7gBTgfQh.KZRm', 'admin', '2025-12-03 12:35:12', NULL, NULL, NULL, NULL, NULL),
+(1, 'Admin', 'admin@articulosdelsur.com', '$2b$10$kxcrB7cALdXM7eY9rq27n.1TOjuES.qmWhUN/gKvkxpHTTjKWidUu', 'admin', '2025-12-03 12:35:12', NULL, NULL, NULL, NULL, NULL),
 (2, 'Claudio Alejandro Lex', 'lexclaudio@gmail.com', '$2y$10$1QV2GOt5mmcLUCYYcNfhi.u16i2qiMj2EHwVO18SF1blE2KCAQJdm', 'client', '2025-12-04 14:28:50', '3764240186', 'San Juan 3472', 'Posadas', 'Misiones', '3300');
 
 --
@@ -279,7 +283,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `product_payment_plans`

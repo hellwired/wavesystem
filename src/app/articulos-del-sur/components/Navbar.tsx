@@ -14,7 +14,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link href="/articulos-del-sur" className="flex-shrink-0 font-bold text-2xl tracking-tight">
                         <span className="text-white">Articulos</span>
-                        <span className="text-orange-500">DelSur</span>
+                        <span className="text-sky-400">DelSur</span>
                     </Link>
 
                     {/* Desktop Navigation */}

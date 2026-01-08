@@ -1,11 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Package, Tag, ShoppingCart, Users, LogOut } from 'lucide-react';
+import { LayoutDashboard, Package, Tag, ShoppingCart, Users, LogOut, Building2, Store } from 'lucide-react';
 
 const menuItems = [
     { name: 'Dashboard', icon: LayoutDashboard, href: '/articulos-del-sur/admin/dashboard' },
-    { name: 'Productos', icon: Package, href: '/articulos-del-sur/admin/products' },
+    { name: 'Depósito', icon: Building2, href: '/articulos-del-sur/admin/depositos' },
+    { name: 'Local Uruguay', icon: Store, href: '/articulos-del-sur/admin/products' },
     { name: 'Categorías', icon: Tag, href: '/articulos-del-sur/admin/categories' },
     { name: 'Ventas', icon: ShoppingCart, href: '/articulos-del-sur/admin/orders' },
     { name: 'Usuarios', icon: Users, href: '/articulos-del-sur/admin/users' },

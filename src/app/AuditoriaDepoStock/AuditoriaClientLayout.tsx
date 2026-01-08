@@ -98,7 +98,7 @@ export default function AuditoriaClientLayout({
                             }}
                             className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group relative overflow-hidden text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 hover:text-red-600"
                         >
-                            <span className="material-symbols-outlined text-[22px] transition-transform duration-200 group-hover:scale-110">
+                            <span className="material-symbols-outlined text-[22px] transition-transform duration-200 group-hover:scale-110 notranslate">
                                 logout
                             </span>
                             <span className="text-sm font-medium tracking-wide">
@@ -113,31 +113,34 @@ export default function AuditoriaClientLayout({
             {/* Main Content */}
             <main className="flex-1 flex flex-col h-full overflow-hidden relative">
                 {/* Top Nav */}
-                <header className="h-16 flex items-center justify-between px-4 lg:px-6 border-b border-[#e7ebf3] dark:border-[#2a3441] bg-white dark:bg-[#1a2230] flex-shrink-0 z-10">
-                    <div className="flex items-center gap-4">
+                <header className="h-16 flex items-center justify-between px-4 lg:px-6 border-b border-[#e7ebf3] dark:border-[#2a3441] bg-white dark:bg-[#1a2230] flex-shrink-0 z-10 gap-4">
+                    <div className="flex items-center gap-3 lg:gap-4">
                         <button
-                            className="lg:hidden text-[#4c669a] dark:text-gray-400 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                            className="lg:hidden text-[#4c669a] dark:text-gray-400 p-2 -ml-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors active:scale-95"
                             onClick={() => setIsSidebarOpen(true)}
+                            aria-label="Abrir menú"
                         >
-                            <span className="material-symbols-outlined">menu</span>
+                            <span className="material-symbols-outlined text-2xl">menu</span>
                         </button>
                         {/* Breadcrumbs/Title mobile */}
-                        <h2 className="text-[#0d121b] dark:text-white text-lg font-bold lg:hidden">
+                        <h2 className="text-[#0d121b] dark:text-white text-lg font-bold lg:hidden truncate max-w-[150px] sm:max-w-none">
                             {menuItems.find(item => isActive(item.href))?.label || 'Dashboard'}
                         </h2>
                     </div>
-                    <div className="flex flex-1 justify-end items-center gap-2 lg:gap-6">
-                        {/* Search Bar */}
-                        <label className="hidden md:flex flex-col min-w-40 h-10 w-64">
+
+                    <div className="flex flex-1 justify-end items-center gap-3 lg:gap-6">
+                        {/* Search Bar: Visible en móvil pero compacta o expandible si se desea. Aquí la haremos full responsive */}
+                        <label className="flex flex-1 max-w-md h-10">
                             <div className="flex w-full flex-1 items-stretch rounded-lg bg-[#f6f6f8] dark:bg-[#101622] border border-transparent focus-within:border-blue-600/50 transition-colors">
                                 <div className="text-[#4c669a] dark:text-gray-400 flex items-center justify-center pl-3">
                                     <span className="material-symbols-outlined text-[20px]">search</span>
                                 </div>
-                                <input className="w-full bg-transparent border-none text-sm text-[#0d121b] dark:text-white focus:ring-0 placeholder:text-[#4c669a] dark:placeholder:text-gray-500" placeholder="Buscar SKU, Orden, Zona..." />
+                                <input className="w-full bg-transparent border-none text-sm text-[#0d121b] dark:text-white focus:ring-0 placeholder:text-[#4c669a] dark:placeholder:text-gray-500 min-w-0" placeholder="Buscar..." />
                             </div>
                         </label>
+
                         {/* Notifications */}
-                        <button className="relative flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#4c669a] dark:text-gray-400 transition-colors">
+                        <button className="relative flex-shrink-0 flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#4c669a] dark:text-gray-400 transition-colors">
                             <span className="material-symbols-outlined">notifications</span>
                             <span className="absolute top-2.5 right-2.5 size-2 bg-red-500 rounded-full border border-white dark:border-[#1a2230]"></span>
                         </button>
@@ -147,7 +150,7 @@ export default function AuditoriaClientLayout({
                                 <p className="text-sm font-semibold text-[#0d121b] dark:text-white leading-tight">{user ? user.username : 'Usuario'}</p>
                                 <p className="text-xs text-[#4c669a] dark:text-gray-400">{user?.nivel_permiso === 1 ? 'Administrador' : 'Operador'}</p>
                             </div>
-                            <div className="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-white dark:ring-gray-700 bg-gray-300"></div>
+                            <div className="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-white dark:ring-gray-700 bg-gray-300 flex-shrink-0"></div>
                         </div>
                     </div>
                 </header>

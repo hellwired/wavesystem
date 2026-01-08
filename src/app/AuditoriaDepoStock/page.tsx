@@ -14,56 +14,56 @@ export default async function AuditoriaDashboard() {
     return (
         <div className="max-w-7xl mx-auto flex flex-col gap-6 lg:gap-8">
             {/* Page Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-between">
                 <div className="flex flex-col gap-1">
                     <h2 className="text-2xl lg:text-3xl font-black text-[#0d121b] dark:text-white tracking-tight">Dashboard Principal</h2>
                     <p className="text-[#4c669a] dark:text-gray-400 text-sm font-medium flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                        <span className="material-symbols-outlined text-[18px] notranslate">calendar_today</span>
                         {new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                     </p>
                 </div>
-                <div className="flex gap-2 sm:gap-3">
-                    <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 h-10 px-3 sm:px-4 rounded-lg border border-[#e7ebf3] dark:border-[#2a3441] bg-white dark:bg-[#1a2230] text-[#0d121b] dark:text-white text-sm font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm">
-                        <span className="material-symbols-outlined text-[20px]">download</span>
-                        <span className="hidden xs:inline">Exportar</span>
+                <div className="flex flex-col sm:flex-row gap-3">
+                    <button className="flex items-center justify-center gap-2 h-11 sm:h-10 px-4 rounded-lg border border-[#e7ebf3] dark:border-[#2a3441] bg-white dark:bg-[#1a2230] text-[#0d121b] dark:text-white text-sm font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm w-full sm:w-auto active:scale-95">
+                        <span className="material-symbols-outlined text-[20px] notranslate">download</span>
+                        <span>Exportar</span>
                     </button>
-                    <Link href="/AuditoriaDepoStock/auditorias" className="flex-1 sm:flex-none w-full sm:w-auto flex items-center justify-center gap-2 h-10 px-3 sm:px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-lg shadow-blue-600/20 transition-all">
-                        <span className="material-symbols-outlined text-[20px]">add_circle</span>
+                    <Link href="/AuditoriaDepoStock/auditorias" className="flex items-center justify-center gap-2 h-11 sm:h-10 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-lg shadow-blue-600/20 transition-all w-full sm:w-auto active:scale-95">
+                        <span className="material-symbols-outlined text-[20px] notranslate">add_circle</span>
                         <span>Nueva Auditoría</span>
                     </Link>
                 </div>
             </div>
 
             {/* Critical Alerts Section */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-red-500">warning</span>
+                    <span className="material-symbols-outlined text-red-500 notranslate">warning</span>
                     <h3 className="text-[#0d121b] dark:text-white text-lg font-bold">Alertas Críticas</h3>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                     {/* Alert 1 */}
-                    <div className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-[#1a2230] p-3 sm:p-4 rounded-xl border-l-4 border-red-500 shadow-sm">
-                        <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg p-2 sm:p-2.5 shrink-0 flex items-center justify-center">
-                            <span className="material-symbols-outlined">payments</span>
+                    <div className="flex items-start sm:items-center gap-3 sm:gap-4 bg-white dark:bg-[#1a2230] p-4 rounded-xl border-l-4 border-red-500 shadow-sm transition-transform hover:scale-[1.01]">
+                        <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg p-2.5 shrink-0">
+                            <span className="material-symbols-outlined notranslate">payments</span>
                         </div>
                         <div className="flex flex-col flex-1 min-w-0">
-                            <p className="text-[#0d121b] dark:text-white font-semibold truncate text-sm sm:text-base">Discrepancia de alto valor</p>
-                            <p className="text-[#4c669a] dark:text-gray-400 text-xs sm:text-sm truncate">Zona B - Diferencia de -$4,500 en items electrónicos</p>
+                            <p className="text-[#0d121b] dark:text-white font-semibold text-sm sm:text-base">Discrepancia de alto valor</p>
+                            <p className="text-[#4c669a] dark:text-gray-400 text-xs sm:text-sm">Zona B - Diferencia de -$4,500 en items electrónicos</p>
                         </div>
-                        <button className="shrink-0 text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline">Revisar</button>
+                        <button className="shrink-0 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline self-center sm:self-auto">Revisar</button>
                     </div>
                     {/* Alert 2 */}
-                    <div className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-[#1a2230] p-3 sm:p-4 rounded-xl border-l-4 border-orange-400 shadow-sm">
-                        <div className="bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded-lg p-2 sm:p-2.5 shrink-0 flex items-center justify-center">
-                            <span className="material-symbols-outlined">schedule</span>
+                    <div className="flex items-start sm:items-center gap-3 sm:gap-4 bg-white dark:bg-[#1a2230] p-4 rounded-xl border-l-4 border-orange-400 shadow-sm transition-transform hover:scale-[1.01]">
+                        <div className="bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded-lg p-2.5 shrink-0">
+                            <span className="material-symbols-outlined notranslate">schedule</span>
                         </div>
                         <div className="flex flex-col flex-1 min-w-0">
-                            <p className="text-[#0d121b] dark:text-white font-semibold truncate text-sm sm:text-base">Auditoría Cíclica Retrasada</p>
-                            <p className="text-[#4c669a] dark:text-gray-400 text-xs sm:text-sm truncate">Pasillo 4 - Vencido hace 24 horas</p>
+                            <p className="text-[#0d121b] dark:text-white font-semibold text-sm sm:text-base">Auditoría Cíclica Retrasada</p>
+                            <p className="text-[#4c669a] dark:text-gray-400 text-xs sm:text-sm">Pasillo 4 - Vencido hace 24 horas</p>
                         </div>
                         <Link
                             href="/AuditoriaDepoStock/auditorias?zone=Pasillo%204"
-                            className="shrink-0 text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                            className="shrink-0 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline self-center sm:self-auto"
                         >
                             Asignar
                         </Link>
@@ -77,10 +77,10 @@ export default async function AuditoriaDashboard() {
                 <div className="bg-white dark:bg-[#1a2230] p-5 rounded-xl border border-[#e7ebf3] dark:border-[#2a3441] shadow-sm flex flex-col gap-4">
                     <div className="flex justify-between items-start">
                         <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600">
-                            <span className="material-symbols-outlined">verified</span>
+                            <span className="material-symbols-outlined notranslate">verified</span>
                         </div>
                         <span className="flex items-center text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
-                            <span className="material-symbols-outlined text-[14px] mr-1">trending_up</span> +0.4%
+                            <span className="material-symbols-outlined text-[14px] mr-1 notranslate">trending_up</span> +0.4%
                         </span>
                     </div>
                     <div>
@@ -92,10 +92,10 @@ export default async function AuditoriaDashboard() {
                 <div className="bg-white dark:bg-[#1a2230] p-5 rounded-xl border border-[#e7ebf3] dark:border-[#2a3441] shadow-sm flex flex-col gap-4">
                     <div className="flex justify-between items-start">
                         <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg text-purple-600">
-                            <span className="material-symbols-outlined">attach_money</span>
+                            <span className="material-symbols-outlined notranslate">attach_money</span>
                         </div>
                         <span className="flex items-center text-xs font-bold text-red-600 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded-full">
-                            <span className="material-symbols-outlined text-[14px] mr-1">trending_down</span> -12%
+                            <span className="material-symbols-outlined text-[14px] mr-1 notranslate">trending_down</span> -12%
                         </span>
                     </div>
                     <div>

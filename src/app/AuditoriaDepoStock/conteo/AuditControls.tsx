@@ -57,17 +57,17 @@ export default function AuditControls({ auditId, auditStatus, stats }: AuditCont
     }
 
     return (
-        <div className="flex items-center gap-3">
-            <button className="flex items-center justify-center rounded-lg h-10 px-4 bg-white dark:bg-[#1a2230] border border-[#e7ebf3] dark:border-[#2a3441] text-[#0d121b] dark:text-white text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm">
-                <span className="material-symbols-outlined mr-2 text-[20px]">pause</span>
+        <div className="flex items-center gap-3 w-full md:w-auto">
+            <button className="flex flex-1 md:flex-none items-center justify-center rounded-lg h-10 px-4 bg-white dark:bg-[#1a2230] border border-[#e7ebf3] dark:border-[#2a3441] text-[#0d121b] dark:text-white text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm active:scale-95">
+                <span className="material-symbols-outlined mr-2 text-[20px] notranslate">pause</span>
                 {auditStatus === 'pausada' ? 'Reanudar' : 'Pausar'}
             </button>
             <button
                 onClick={handleCloseAudit}
                 disabled={isClosing}
-                className="flex items-center justify-center rounded-lg h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-600/20 transition-all disabled:opacity-50"
+                className="flex flex-1 md:flex-none items-center justify-center rounded-lg h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-600/20 transition-all disabled:opacity-50 active:scale-95"
             >
-                <span className="material-symbols-outlined mr-2 text-[20px]">check_circle</span>
+                <span className="material-symbols-outlined mr-2 text-[20px] notranslate">check_circle</span>
                 {isClosing ? 'Finalizando...' : 'Finalizar Auditoría'}
             </button>
         </div>
