@@ -23,6 +23,7 @@ const Navbar: React.FC = () => {
         { label: (t.nav.items as any).ecommerce, href: '/ecommerce-demo' },
         { label: (t.nav.items as any).subscriptions, href: '/subscriptions-demo' },
         { label: (t.nav.items as any).logistics, href: '/logistica/login' },
+        { label: 'CableColor', href: 'https://wavesystem.online/cablecolor/login.php' },
         { label: 'LMS Demo', href: '/lms-demo' },
       ]
     },
